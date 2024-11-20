@@ -171,5 +171,5 @@ class DataProcessor(object):
 
 if __name__ == "__main__":
     processor = DataProcessor(embedding_model="openai")
-    processor.process_dataset(dir_path="../results/dataset")
+    processor.process_dataset(dir_path="./gpt4_dataset")
     processor.save_dataset(save_path="./processed_dataset.h5")

@@ -10,31 +10,32 @@ try:
 except ImportError:
     is_openai_available = False
 else:
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if api_key is None:
+    base_url = os.environ.get("QWEN_BASE")
+    api_key = os.environ.get("QWEN_API_KEY")
+    if base_url is None or api_key is None:
         is_openai_available = False
     else:
         is_openai_available = True
 
 DEFAULT_TEMPERATURE = 0.7
 DEFAULT_MAX_TOKENS = 256
-DEFAULT_MODEL = "gpt-4-1106-preview"  # "gpt-3.5-turbo-1106"
+DEFAULT_MODEL = "Qwen/Qwen3-14B"
 
 END_OF_MESSAGE = "<EOS>"  # End of message token specified by us not OpenAI
 STOP = ("<|endoftext|>", END_OF_MESSAGE)  # End of sentence token
 
 
-class OpenAIChat(IntelligenceBackend):
+class Qwen(IntelligenceBackend):
     """
-    Interface to the ChatGPT style model with system, user, assistant roles separation
+    Interface to the Qwen model while using the OpenAI API compatible endpoint.
     """
     stateful = False
-    type_name = "openai-chat"
+    type_name = "qwen"
 
     def __init__(self, temperature: float = DEFAULT_TEMPERATURE, max_tokens: int = DEFAULT_MAX_TOKENS,
                  model: str = DEFAULT_MODEL, merge_other_agents_as_one_user: bool = True, **kwargs):
         """
-        instantiate the OpenAIChat backend
+        instantiate the Qwen backend
         args:
             temperature: the temperature of the sampling
             max_tokens: the maximum number of tokens to sample
@@ -50,7 +51,7 @@ class OpenAIChat(IntelligenceBackend):
         self.model = model
         self.merge_other_agent_as_user = merge_other_agents_as_one_user
 
-        self.client = OpenAI(api_key=api_key)
+        self.client = OpenAI(base_url=base_url, api_key=api_key)
     
     @retry(stop=stop_after_attempt(6), wait=wait_random_exponential(min=1, max=60))
     def _get_response(self, messages, *args, **kwargs):
@@ -59,7 +60,8 @@ class OpenAIChat(IntelligenceBackend):
             messages=messages,
             temperature=self.temperature,
             max_tokens=self.max_tokens,
-            stop=STOP
+            stop=STOP,
+            extra_body={"enable_thinking": False}
         )
         response = completion.choices[0].message
         return response
@@ -75,9 +77,9 @@ class OpenAIChat(IntelligenceBackend):
 
         # Specific action and desired JSON response format
         if request_msg:
-            messages.append({"role": "system", "content": request_msg})
+            messages.append({"role": "system", "content": f"{request_msg}/no_think"})
         else:  # The default request message that reminds the agent its role and instruct it to speak
-            messages.append({"role": "system", "content": f"Now it is your turn, {agent_name}."})
+            messages.append({"role": "system", "content": f"Now it is your turn, {agent_name}./no_think"})
         
         # Generate response
         response = self._get_response(messages, *args, **kwargs)

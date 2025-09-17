@@ -4,11 +4,13 @@ from .base import IntelligenceBackend
 from .openai import OpenAIChat
 from .human import Human
 from .gemini import Gemini
+from .qwen import Qwen
 
 ALL_BACKENDS = [
     Human,
     OpenAIChat,
     Gemini,
+    Qwen,
 ]
 
 BACKEND_REGISTRY = {backend.type_name: backend for backend in ALL_BACKENDS}

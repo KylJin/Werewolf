@@ -12,51 +12,51 @@
             "name": "player1",
             "role": "Troublemaker",
             "backend": {
-                "backend_type": "gemini",
-                "temperature": 1.0,
+                "backend_type": "qwen",
+                "temperature": 0.7,
                 "max_tokens": 1000
             },
-            "structure": "dpins:no"
+            "structure": "react"
         },
         {
             "name": "player2",
             "role": "Werewolf",
             "backend": {
-                "backend_type": "gemini",
-                "temperature": 1.0,
+                "backend_type": "qwen",
+                "temperature": 0.7,
                 "max_tokens": 1000
             },
-            "structure": "dpins:no"
+            "structure": "react"
         },
         {
             "name": "player3",
             "role": "Seer",
             "backend": {
-                "backend_type": "gemini",
-                "temperature": 1.0,
+                "backend_type": "qwen",
+                "temperature": 0.7,
                 "max_tokens": 1000
             },
-            "structure": "dpins:no"
+            "structure": "react"
         },
         {
             "name": "player4",
             "role": "Robber",
             "backend": {
-                "backend_type": "gemini",
-                "temperature": 1.0,
+                "backend_type": "qwen",
+                "temperature": 0.7,
                 "max_tokens": 1000
             },
-            "structure": "dpins:no"
+            "structure": "react"
         },
         {
             "name": "player5",
             "role": "Villager",
             "backend": {
-                "backend_type": "gemini",
-                "temperature": 1.0,
+                "backend_type": "qwen",
+                "temperature": 0.7,
                 "max_tokens": 1000
             },
-            "structure": "dpins:no"
+            "structure": "react"
         }
     ]
 }

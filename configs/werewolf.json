@@ -13,7 +13,7 @@
             "role": "Troublemaker",
             "backend": {
                 "backend_type": "qwen",
-                "temperature": 0.7,
+                "temperature": 1.0,
                 "max_tokens": 1000
             },
             "structure": "react"
@@ -23,7 +23,7 @@
             "role": "Werewolf",
             "backend": {
                 "backend_type": "qwen",
-                "temperature": 0.7,
+                "temperature": 1.0,
                 "max_tokens": 1000
             },
             "structure": "react"
@@ -33,7 +33,7 @@
             "role": "Seer",
             "backend": {
                 "backend_type": "qwen",
-                "temperature": 0.7,
+                "temperature": 1.0,
                 "max_tokens": 1000
             },
             "structure": "react"
@@ -43,7 +43,7 @@
             "role": "Robber",
             "backend": {
                 "backend_type": "qwen",
-                "temperature": 0.7,
+                "temperature": 1.0,
                 "max_tokens": 1000
             },
             "structure": "react"
@@ -53,7 +53,7 @@
             "role": "Villager",
             "backend": {
                 "backend_type": "qwen",
-                "temperature": 0.7,
+                "temperature": 1.0,
                 "max_tokens": 1000
             },
             "structure": "react"

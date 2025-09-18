@@ -12,7 +12,7 @@
             "name": "player1",
             "role": "Troublemaker",
             "backend": {
-                "backend_type": "gemini",
+                "backend_type": "qwen",
                 "temperature": 1.0,
                 "max_tokens": 1000
             },
@@ -22,7 +22,7 @@
             "name": "player2",
             "role": "Werewolf",
             "backend": {
-                "backend_type": "gemini",
+                "backend_type": "qwen",
                 "temperature": 1.0,
                 "max_tokens": 1000
             },
@@ -32,7 +32,7 @@
             "name": "player3",
             "role": "Seer",
             "backend": {
-                "backend_type": "gemini",
+                "backend_type": "qwen",
                 "temperature": 1.0,
                 "max_tokens": 1000
             },
@@ -42,7 +42,7 @@
             "name": "player4",
             "role": "Robber",
             "backend": {
-                "backend_type": "gemini",
+                "backend_type": "qwen",
                 "temperature": 1.0,
                 "max_tokens": 1000
             },
@@ -52,7 +52,7 @@
             "name": "player5",
             "role": "Villager",
             "backend": {
-                "backend_type": "gemini",
+                "backend_type": "qwen",
                 "temperature": 1.0,
                 "max_tokens": 1000
             },

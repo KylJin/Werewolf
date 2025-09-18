@@ -61,7 +61,7 @@ class Qwen(IntelligenceBackend):
             temperature=self.temperature,
             max_tokens=self.max_tokens,
             stop=STOP,
-            extra_body={"enable_thinking": False}
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
         )
         response = completion.choices[0].message
         return response
@@ -77,9 +77,9 @@ class Qwen(IntelligenceBackend):
 
         # Specific action and desired JSON response format
         if request_msg:
-            messages.append({"role": "system", "content": f"{request_msg}/no_think"})
+            messages.append({"role": "system", "content": f"{request_msg}"})
         else:  # The default request message that reminds the agent its role and instruct it to speak
-            messages.append({"role": "system", "content": f"Now it is your turn, {agent_name}./no_think"})
+            messages.append({"role": "system", "content": f"Now it is your turn, {agent_name}."})
         
         # Generate response
         response = self._get_response(messages, *args, **kwargs)
